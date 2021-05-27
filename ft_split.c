@@ -39,7 +39,7 @@ static size_t	ft_count_elements(char const *str, char sep)
 	return (count);
 }
 
-static char		**fill_list(char const *str, char s, char **list, size_t len)
+static char	**fill_list(char const *str, char s, char **list, size_t len)
 {
 	size_t	i;
 	size_t	list_i;
@@ -68,7 +68,7 @@ static char		**fill_list(char const *str, char s, char **list, size_t len)
 	return (list);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	list_len;
 	char	**list;
