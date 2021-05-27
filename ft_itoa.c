@@ -13,7 +13,11 @@
 #include "libft.h"
 #include <stdlib.h>
 
+<<<<<<< HEAD
 static int	ft_count_digits(int n)
+=======
+int	ft_count_digits(int n)
+>>>>>>> 54f53c6fab6a7adf84e7059e6782927f62a510a6
 {
 	int		count;
 	long	res;
@@ -32,17 +36,11 @@ static int	ft_count_digits(int n)
 	return (count);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_itoa_do(int i, int n, int has_sign, int digit_count)
 {
-	int		digit_count;
-	int		has_sign;
-	int		i;
 	char	*str;
 	long	nbr;
 
-	digit_count = ft_count_digits(n);
-	has_sign = n < 0;
-	i = has_sign ? digit_count : digit_count - 1;
 	str = (char *)malloc(sizeof(char) * (has_sign + digit_count + 1));
 	if (!str)
 		return (0);
@@ -59,4 +57,22 @@ char	*ft_itoa(int n)
 	}
 	str[(has_sign + digit_count)] = 0;
 	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	int		digit_count;
+	int		has_sign;
+	int		i;
+	char	*str;
+
+	digit_count = ft_count_digits(n);
+	has_sign = 0;
+	i = digit_count - 1;
+	if (n < 0)
+	{
+		has_sign = 1;
+		i = digit_count;
+	}
+	return (ft_itoa_do(i, n, has_sign, digit_count));
 }

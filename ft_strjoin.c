@@ -25,19 +25,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(new_str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	new_str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!new_str)
 		return (0);
 	while (i < s1_len)
-	{
-		new_str[i] = s1[i];
-		i++;
-	}
+		new_str[i] = s1[i++];
 	i = 0;
 	while (i < s2_len)
-	{
-		new_str[s1_len + i] = s2[i];
-		i++;
-	}
+		new_str[s1_len + i] = s2[i++];
 	new_str[s1_len + i] = 0;
 	return (new_str);
 }
