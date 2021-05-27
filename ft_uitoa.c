@@ -1,10 +1,10 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static int ft_count_unsigned_digits(unsigned int n)
+static int	ft_count_unsigned_digits(unsigned int n)
 {
-	unsigned int count;
-	long res;
+	unsigned int	count;
+	long			res;
 
 	count = 0;
 	res = n;
@@ -20,17 +20,11 @@ static int ft_count_unsigned_digits(unsigned int n)
 	return (count);
 }
 
-char *ft_uitoa(unsigned int n)
+static char	*ft_uitoa_do(int i, int n, int has_sign, int digit_count)
 {
-	int digit_count;
-	int has_sign;
-	int i;
-	char *str;
-	long nbr;
+	char	*str;
+	long	nbr;
 
-	digit_count = ft_count_unsigned_digits(n);
-	has_sign = n < 0;
-	i = has_sign ? digit_count : digit_count - 1;
 	str = (char *)malloc(sizeof(char) * (has_sign + digit_count + 1));
 	if (!str)
 		return (0);
@@ -47,4 +41,22 @@ char *ft_uitoa(unsigned int n)
 	}
 	str[(has_sign + digit_count)] = 0;
 	return (str);
+}
+
+char	*ft_uitoa(unsigned int n)
+{
+	int		digit_count;
+	int		has_sign;
+	int		i;
+	char	*str;
+	long	nbr;
+
+	digit_count = ft_count_unsigned_digits(n);
+	i = digit_count - 1;
+	if (n < 0)
+	{
+		has_sign = 1;
+		i = digit_count;
+	}
+	return (ft_uitoa_do(i, n, has_sign, digit_count));
 }
