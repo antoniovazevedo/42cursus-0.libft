@@ -48,9 +48,8 @@ char	*ft_uitoa(unsigned int n)
 	int		digit_count;
 	int		has_sign;
 	int		i;
-	char	*str;
-	long	nbr;
 
+	has_sign = 0;
 	digit_count = ft_count_unsigned_digits(n);
 	i = digit_count - 1;
 	if (n < 0)
